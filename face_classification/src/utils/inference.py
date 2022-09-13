@@ -1,11 +1,11 @@
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
-from keras.preprocessing import image
+from tensorflow.keras.utils import load_img, img_to_array
 
 def load_image(image_path, grayscale=False, target_size=None):
-    pil_image = image.load_img(image_path, grayscale, target_size)
-    return image.img_to_array(pil_image)
+    pil_image = load_img(image_path, grayscale=grayscale, color_mode='rgb', target_size=target_size)
+    return img_to_array(pil_image)
 
 def load_detection_model(model_path):
     detection_model = cv2.CascadeClassifier(model_path)
